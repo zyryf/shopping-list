@@ -1,0 +1,13 @@
+body {
+  min-height: 100vh;
+}
+
+.list-container {
+  width: 75%;
+  margin: 0 auto;
+}
+@media (max-width: 576px) {
+  .list-container {
+    width: 100%;
+  }
+}
