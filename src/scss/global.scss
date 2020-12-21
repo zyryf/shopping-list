@@ -1,12 +1,15 @@
 body {
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .list-container {
   width: 75%;
   margin: 0 auto;
 }
-@media (max-width: 576px) {
+@media (max-width: 992px) {
   .list-container {
     width: 100%;
   }

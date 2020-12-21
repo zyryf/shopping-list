@@ -28,11 +28,11 @@
         <form ">
           <label for=" category">Please select the category:</label>
           <select class=" form-select py-2" aria-label="Default select example" id='category'>
-            <option selected>Fruit</option>
-            <option value="1">Vegetable</option>
-            <option value="2">Dairy Product</option>
-            <option value="3">Bread</option>
-            <option value="4">Domestic Article</option>
+            <option selected value="fruits">Fruit</option>
+            <option value="vegetables">Vegetable</option>
+            <option value="dairy-products">Dairy Product</option>
+            <option value="bread">Bread</option>
+            <option value="domestic-articles">Domestic Article</option>
           </select>
           <div class="form-outline my-3">
             <input type="text" id="input-name" class="form-control l form-control-lg" />
@@ -40,127 +40,103 @@
           </div>
           <div class=" d-flex justify-content-start">
             <div class="form-check mx-2">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
-                value="option1" />
-              <label class="form-check-label" for="inlineRadio1">Amount</label>
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="radio-amount" value="option1"
+                checked />
+              <label class="form-check-label" for="radio-amount">Amount</label>
             </div>
             <div class="form-check mx-2">
-              <input class="form-check-input " type="radio" name="inlineRadioOptions" id="inlineRadio1"
+              <input class="form-check-input " type="radio" name="inlineRadioOptions" id="radio-weight"
                 value="option1" />
-              <label class="form-check-label" for="inlineRadio1">Weight</label>
+              <label class="form-check-label" for="radio-weight">Weight</label>
             </div>
 
           </div>
           <div class="form-outline my-3">
-            <input type="number" id="typeNumber" class="form-control form-control-lg" />
-            <label class="form-label" for="typeNumber">Amount/Weight</label>
+            <input type="number" id="number" class="form-control form-control-lg" />
+            <label class="form-label" for="number">Amount/Weight</label>
           </div>
           <button type="submit" class="btn btn-primary btn-block" id="add-item">Add item</button>
         </form>
       </div>
 
     </div>
+    <div class="row justify-content-center my-3 " id="invalid-form" style="display: none;">
+      <div class=" col-md-6 mx-auto">
+        <div class="alert alert-danger" role="alert">
+          Please fill in all the informations!
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center my-3 info   " style="display:none">
+      <div class=" col-md-4 mx-auto">
+        <div class=" alert  text-center " role=" alert">
+          Total number of items in lists <span class="badge bg-secondary mx-2"></span>
+        </div>
+      </div>
+    </div>
     <div class="list-container row justify-content-center my-3">
 
-      <div class="col-md-6">
-        <div class="card border border-warning my-3">
+      <div class="col-md-6 fruits" style="display: none;">
+        <div class="card border border-warning my-3 ">
           <div class="card-header bg-warning">
             <strong>Fruits</strong>
           </div>
           <div class="card-body">
             <ul class="list-group mb-3" id="fruits">
-              <li class="list-group-item d-flex  justify-content-between ">
-
-                <p class="name mb-0">Cras justo odio </p>
-
-
-                <div class="action-wrapper d-flex align-items-center">
-                  <p class="amount mx-3 mb-0"><strong>5</strong></p>
-                  <button type="button" class="btn btn-floating btn-sm mx-1">
-                    <i class="fas fa-pen"></i>
-                  </button>
-                  <button type="button" class="btn btn-danger btn-floating btn-sm mx-1">
-                    <i class="far fa-trash-alt"></i>
-                  </button>
-                </div>
-              </li>
-
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-              <li class="list-group-item">Morbi leo risus</li>
-
             </ul>
 
           </div>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="card border border-success my-3">
+      <div class="col-md-6 vegetables" style="display: none;">
+        <div class="card border border-success my-3 ">
           <div class="card-header bg-success">
             <strong>Vegetables</strong>
           </div>
           <div class="card-body">
             <ul class="list-group mb-3" id="vegetables">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-
             </ul>
-
           </div>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6 dairy-products" style="display: none;">
         <div class="card border border-info my-3">
           <div class="card-header bg-info">
             <strong> Diary Products</strong>
           </div>
           <div class="card-body">
-            <ul class="list-group mb-3" id="diary-products">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-
+            <ul class="list-group mb-3" id="dairy-products">
             </ul>
 
           </div>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-6 bread" style="display: none;">
         <div class="card border border-primary my-3">
           <div class="card-header bg-primary">
             <strong>Bread</strong>
           </div>
           <div class="card-body">
             <ul class="list-group mb-3" id="bread">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-
             </ul>
 
           </div>
         </div>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-6 domestic-articles" style="display: none;">
         <div class="card border border-secondary my-3">
-          <div class="card-header bg-secondary" id="domestic-articles">
+          <div class="card-header bg-secondary">
             <strong>Domestic Articles</strong>
           </div>
           <div class="card-body">
-            <ul class="list-group mb-3">
-              <li class="list-group-item">Cras justo odio</li>
-              <li class="list-group-item">Dapibus ac facilisis in</li>
-
+            <ul class="list-group mb-3" id="domestic-articles">
             </ul>
 
           </div>
         </div>
       </div>
-
-
-
-
-
-
-
     </div>
 
   </div>
@@ -170,7 +146,7 @@
 </body>
 <!-- Main js file -->
 <script type=" text/javascript" src="js/index.min.js">
-    </script>
+              </script>
 <!-- Custom scripts -->
 <script type="text/javascript"></script>
 
