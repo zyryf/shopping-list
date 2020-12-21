@@ -19,8 +19,8 @@ addItem.addEventListener('click', (evt) => {
     ? new Product(category, name, number, null)
     : new Product(category, name, null, number);
 
-  if (UI.isFormValid(name, number)) {
-    UI.addProduct(product);
+  if (UI.isFormValid(name, number, 'main')) {
+    UI.addProduct(product, 'main');
   }
 });
 
