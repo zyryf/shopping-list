@@ -36,6 +36,7 @@ class UI {
     this.setTotalNumberOfItems();
     this.setTotalAmount();
     this.setTotalWeight();
+    this.toggleExportButton();
   }
 
   static setTotalNumberOfItems() {
@@ -90,6 +91,7 @@ class UI {
       elementToRemove.remove();
 
       this.toggleList(list.id);
+      this.toggleExportButton();
       this.setTotalNumberOfItems();
       this.setTotalAmount();
       this.setTotalWeight();
@@ -132,6 +134,7 @@ class UI {
     this.elementToEdit.remove();
     // Storage.removeProduct(this.elementToEdit);
     this.toggleList(category);
+    this.toggleExportButton();
 
     // add new element
     this.addProduct(newProduct, 'edit');
@@ -154,6 +157,14 @@ class UI {
       return false;
     }
     return true;
+  }
+
+  static toggleExportButton() {
+    const products = Storage.getProducts();
+    const exportElement = document.getElementById('export-list');
+    if (products.length !== 0) {
+      exportElement.style = 'display:block';
+    } else exportElement.style = 'display:none';
   }
 
   static displayAlert(selector) {
