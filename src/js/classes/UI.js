@@ -24,7 +24,7 @@ class UI {
     </div>
     `;
     list.appendChild(li);
-    Storage.addProduct(product);
+    if (formType !== null) Storage.addProduct(product);
     this.toggleList(product.category);
 
     if (formType === 'main') {
@@ -32,7 +32,7 @@ class UI {
     } else if (formType === 'edit') {
       this.hideAlert('.invalid-modal-form');
     }
-    this.clearForm();
+    if (formType !== null) this.clearForm();
     this.setTotalNumberOfItems();
     this.setTotalAmount();
     this.setTotalWeight();
@@ -128,6 +128,7 @@ class UI {
   static editProduct(newProduct) {
     // delete old element
     const category = this.elementToEdit.parentElement.id;
+    Storage.removeProduct(this.elementToEdit);
     this.elementToEdit.remove();
     // Storage.removeProduct(this.elementToEdit);
     this.toggleList(category);
