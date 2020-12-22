@@ -1,4 +1,5 @@
 import { Modal } from 'mdb-ui-kit';
+import Storage from './Storage';
 
 class UI {
   static addProduct(product, formType) {
@@ -82,7 +83,10 @@ class UI {
 
   static deleteProduct(el, list) {
     if (el.target.classList.contains('fa-trash-alt')) {
-      el.target.parentElement.parentElement.parentElement.remove();
+      const elementToRemove = el.target.parentElement.parentElement.parentElement;
+
+      Storage.removeProduct(elementToRemove);
+      elementToRemove.remove();
 
       this.toggleList(list.id);
       this.setTotalNumberOfItems();

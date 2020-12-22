@@ -1,5 +1,6 @@
 import UI from '../classes/UI';
 import Product from '../classes/Product';
+import Storage from '../classes/Storage';
 
 const addItem = document.getElementById('add-item');
 
@@ -21,6 +22,7 @@ addItem.addEventListener('click', (evt) => {
 
   if (UI.isFormValid(name, number, 'main')) {
     UI.addProduct(product, 'main');
+    Storage.addProduct(product);
   }
 });
 
