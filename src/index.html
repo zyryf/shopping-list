@@ -75,27 +75,39 @@
         </div>
 
       </div>
-      <div class=" col-xl-3   px-0 info-total-amount " style="display:none">
+      <div class=" col-xl-2   px-0 info-total-amount " style="display:none">
         <div class=" alert    text-center mb-0 p-1 mx-auto" role=" alert">
           Total amount <span class="badge badge-total-amount bg-secondary mx-2 ">0</span>
         </div>
 
       </div>
-      <div class=" col-xl-3 px-0 info-total-weight " style="display:none">
+      <div class=" col-xl-2 px-0 info-total-weight " style="display:none">
         <div class=" alert  text-center mb-0 p-1 mx-auto" role=" alert ">
           Total weight <span class="badge badge-total-weight bg-secondary mx-2">0</span>
         </div>
 
       </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-3">
-        <button id='export'>export</button>
+      <div class="col-xl-1 px-0">
+        <div class="dropdown">
+          <button class="btn btn-outline-primary dropdown-toggle px-6" type="button" id="dropdownMenuButton"
+            data-mdb-toggle="dropdown" aria-expanded="false">
+            Export List
+          </button>
+          <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+            <li><a class="dropdown-item" id="export-pdf" href="#">PDF</a></li>
+            <li><a class="dropdown-item" id="export-csv" href="#">CSV</a></li>
+            <!-- <li><a class="dropdown-item" id="export-xml" href="#">XML</a></li> -->
+          </ul>
+        </div>
       </div>
     </div>
 
-    <div class="list-container row justify-content-center my-3">
+
+
+  </div>
+
+  <div class="container p-6">
+    <div class="row justify-content-center my-3">
 
       <div class="col-md-4 fruits" style="display: none;">
         <div class="card border border-warning my-3 ">
@@ -159,8 +171,11 @@
         </div>
       </div>
     </div>
-
   </div>
+
+
+
+
 
 
 

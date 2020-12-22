@@ -79,6 +79,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "core-js": "^3.8.1",
     "export-to-csv": "^0.2.1",
     "lodash": "^4.17.20",
     "mdb-ui-kit": "3.0.0",

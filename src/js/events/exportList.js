@@ -1,10 +1,15 @@
 import ExportHandler from '../classes/exportHandler';
 
-const exportList = document.getElementById('export');
+const exportPDF = document.getElementById('export-pdf');
 
-exportList.addEventListener('click', () => {
-  ExportHandler.generateCSV();
+exportPDF.addEventListener('click', () => {
   ExportHandler.generatePDF();
 });
 
-export default exportList;
+const exportCSV = document.getElementById('export-csv');
+
+exportCSV.addEventListener('click', () => {
+  ExportHandler.generateCSV();
+});
+
+export { exportPDF, exportCSV };
