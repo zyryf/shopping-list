@@ -5,17 +5,3 @@ body {
   flex-direction: column;
   justify-content: center;
 }
-
-.loader-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  background-color: white;
-  transition: 0.5s;
-}
