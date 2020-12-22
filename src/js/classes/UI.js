@@ -32,17 +32,47 @@ class UI {
     }
     this.clearForm();
     this.setTotalNumberOfItems();
+    this.setTotalAmount();
+    this.setTotalWeight();
   }
 
   static setTotalNumberOfItems() {
     const products = document.querySelectorAll('.list-group-item');
-    const info = document.querySelector('.info');
+    const info = document.querySelector('.info-total');
 
     if (products.length !== 0) {
-      const badge = document.querySelector('.badge');
+      const badge = document.querySelector('.badge-total');
       info.style = 'display:flex';
       badge.innerHTML = `${products.length}`;
     } else info.style = 'display:none';
+  }
+
+  static setTotalAmount() {
+    const products = document.querySelectorAll('.amount');
+    const amountInfo = document.querySelector('.info-total-amount');
+    let totalAmount = 0;
+    products.forEach((product) => {
+      totalAmount += parseInt(product.innerText, 10);
+    });
+    if (totalAmount !== 0) {
+      const badge = document.querySelector('.badge-total-amount');
+      amountInfo.style = 'display:flex';
+      badge.innerHTML = totalAmount;
+    } else amountInfo.style = 'display:none';
+  }
+
+  static setTotalWeight() {
+    const products = document.querySelectorAll('.weight');
+    const weightInfo = document.querySelector('.info-total-weight');
+    let totalWeight = 0;
+    products.forEach((product) => {
+      totalWeight += parseFloat(product.innerText);
+    });
+    if (totalWeight !== 0) {
+      const badge = document.querySelector('.badge-total-weight');
+      weightInfo.style = 'display:flex';
+      badge.innerHTML = totalWeight;
+    } else weightInfo.style = 'display:none';
   }
 
   static clearForm() {
@@ -56,6 +86,8 @@ class UI {
 
       this.toggleList(list.id);
       this.setTotalNumberOfItems();
+      this.setTotalAmount();
+      this.setTotalWeight();
     }
   }
 
@@ -96,6 +128,8 @@ class UI {
 
     // add new element
     this.addProduct(newProduct, 'edit');
+    this.setTotalAmount();
+    this.setTotalWeight();
 
     this.editModal.hide();
   }
@@ -107,7 +141,7 @@ class UI {
   }
 
   static isFormValid(name, number, formType) {
-    if (name === '' || number === '') {
+    if (name === '' || number === '' || number <= 0) {
       if (formType === 'main') this.displayAlert('.invalid-form');
       else this.displayAlert('.invalid-modal-form');
       return false;
