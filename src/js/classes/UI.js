@@ -79,8 +79,7 @@ class UI {
   }
 
   static clearForm() {
-    document.getElementById('input-name').value = '';
-    document.getElementById('number').value = '';
+    document.getElementById('form').reset();
   }
 
   static deleteProduct(el, list) {
