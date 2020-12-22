@@ -21,7 +21,7 @@
 <body>
   <!-- Start your project here-->
 
-  <div class="container p-4 ">
+  <div class="container p-6 ">
     <h2 class=" text-center">Shopping List App</h2>
     <div class="row justify-content-center my-3">
       <div class="col-md-6 form-wrapper">
@@ -69,15 +69,29 @@
     </div>
 
     <div class="row justify-content-center my-3 info" style="display:none">
-      <div class=" col-md-4 mx-auto">
-        <div class=" alert  text-center " role=" alert">
-          Total number of items in lists <span class="badge bg-secondary mx-2"></span>
+      <div class=" col-md-3 px-0">
+        <div class=" alert  text-center mb-0 py-1" role=" alert">
+          Total number of items in lists <span class="badge bg-secondary mx-2 "></span>
         </div>
+
+      </div>
+      <div class=" col-md-3  px-0">
+        <div class=" alert  text-center mb-0 py-1" role=" alert">
+          Total amount <span class="badge bg-secondary mx-2 ">2</span>
+        </div>
+
+      </div>
+      <div class=" col-md-3 px-0">
+        <div class=" alert  text-center mb-0 py-1" role=" alert ">
+          Total weight <span class="badge bg-secondary mx-2">3</span>
+        </div>
+
       </div>
     </div>
+
     <div class="list-container row justify-content-center my-3">
 
-      <div class="col-md-6 fruits" style="display: none;">
+      <div class="col-md-4 fruits" style="display: none;">
         <div class="card border border-warning my-3 ">
           <div class="card-header bg-warning">
             <strong>Fruits</strong>
@@ -90,7 +104,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6 vegetables" style="display: none;">
+      <div class="col-md-4 vegetables" style="display: none;">
         <div class="card border border-success my-3 ">
           <div class="card-header bg-success">
             <strong>Vegetables</strong>
@@ -101,7 +115,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6 dairy-products" style="display: none;">
+      <div class="col-md-4 dairy-products" style="display: none;">
         <div class="card border border-info my-3">
           <div class="card-header bg-info">
             <strong> Diary Products</strong>
@@ -113,7 +127,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6 bread" style="display: none;">
+      <div class="col-md-4 bread" style="display: none;">
         <div class="card border border-primary my-3">
           <div class="card-header bg-primary">
             <strong>Bread</strong>
@@ -126,7 +140,7 @@
         </div>
       </div>
 
-      <div class="col-md-6 domestic-articles" style="display: none;">
+      <div class="col-md-4 domestic-articles" style="display: none;">
         <div class="card border border-secondary my-3">
           <div class="card-header bg-secondary">
             <strong>Domestic Articles</strong>
@@ -143,6 +157,10 @@
   </div>
 
 
+
+
+
+
   <!-- Modal -->
   <div class="modal fade " id="edit-product-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog ">
@@ -155,7 +173,7 @@
           <form ">
           <label for=" category">New category:</label>
             <select class=" form-select py-2" aria-label="Default select example" id='new-category'>
-              <option selected value="fruits">Fruit</option>
+              <option value="fruits">Fruit</option>
               <option value="vegetables">Vegetable</option>
               <option value="dairy-products">Dairy Product</option>
               <option value="bread">Bread</option>
@@ -180,7 +198,7 @@
             </div>
             <div class="form-outline my-3">
               <input type="number" id="new-number" class="form-control form-control-lg" />
-              <label class="form-label" for="number">Amount/Weight</label>
+              <label class="form-label" for="new-number">Amount/Weight</label>
             </div>
 
           </form>

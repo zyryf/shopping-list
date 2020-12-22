@@ -7,8 +7,8 @@ class UI {
 
     li.className = `list-group-item d-flex  justify-content-between ${product.category}-element`;
 
-    const type = product.amount ? 'amount' : 'weight';
-    const typeValue = product.amount || product.weight;
+    const type = product.amount === null ? 'weight' : 'amount';
+    const typeValue = product.weight || product.amount;
 
     li.innerHTML = `
     <p class="name mb-0">${product.name} </p>
@@ -23,15 +23,14 @@ class UI {
     </div>
     `;
     list.appendChild(li);
-    this.showOrHideList(product.category);
+    this.toggleList(product.category);
 
     if (formType === 'main') {
       this.hideAlert('.invalid-form');
-      this.clearForm(formType);
-    } else {
+    } else if (formType === 'edit') {
       this.hideAlert('.invalid-modal-form');
-      this.clearForm(formType);
     }
+    this.clearForm();
     this.setTotalNumberOfItems();
   }
 
@@ -41,26 +40,21 @@ class UI {
 
     if (products.length !== 0) {
       const badge = document.querySelector('.badge');
-      info.style = 'display:block';
+      info.style = 'display:flex';
       badge.innerHTML = `${products.length}`;
     } else info.style = 'display:none';
   }
 
-  static clearForm(formType) {
-    if (formType === 'main') {
-      document.getElementById('input-name').value = '';
-      document.getElementById('number').value = '';
-    } else {
-      document.getElementById('new-input-name').value = '';
-      document.getElementById('new-number').value = '';
-    }
+  static clearForm() {
+    document.getElementById('input-name').value = '';
+    document.getElementById('number').value = '';
   }
 
   static deleteProduct(el, list) {
     if (el.target.classList.contains('fa-trash-alt')) {
       el.target.parentElement.parentElement.parentElement.remove();
 
-      this.showOrHideList(list.id);
+      this.toggleList(list.id);
       this.setTotalNumberOfItems();
     }
   }
@@ -68,25 +62,47 @@ class UI {
   static showEditModal(el) {
     if (el.target.classList.contains('fa-pen')) {
       const elementToEdit = el.target.parentElement.parentElement.parentElement;
-      this.elementToRemove = elementToEdit;
+      this.elementToEdit = elementToEdit;
       const editModal = new Modal(document.getElementById('edit-product-modal'));
+      this.editModal = editModal;
+      this.initializeModalInputs();
       editModal.show();
     }
   }
 
-  static editProduct(newProduct) {
-    // delete old element
-    this.elementToRemove.remove();
-    // add new element
-    this.addProduct(newProduct, 'edit');
-    const editModal = new Modal(document.getElementById('edit-product-modal'));
-    editModal.hide();
+  static initializeModalInputs() {
+    const currentName = this.elementToEdit.childNodes[1].innerText;
+    const currentNumber = this.elementToEdit.childNodes[3].innerText;
+    const category = this.elementToEdit.parentElement.id;
+    const type = currentNumber.includes('.') ? 'weight' : 'amount';
+
+    if (type === 'weight') {
+      document.getElementById('new-radio-weight').checked = true;
+    } else if (type === 'amount') {
+      document.getElementById('new-radio-amount').checked = true;
+    }
+    document.getElementById('new-input-name').value = currentName;
+    document.getElementById('new-number').value = currentNumber;
+    document.getElementById('new-category').options.forEach((option) => {
+      if (option.value === category) option.selected = true;
+    });
   }
 
-  static showOrHideList(category) {
+  static editProduct(newProduct) {
+    // delete old element
+    const category = this.elementToEdit.parentElement.id;
+    this.elementToEdit.remove();
+    this.toggleList(category);
+
+    // add new element
+    this.addProduct(newProduct, 'edit');
+
+    this.editModal.hide();
+  }
+
+  static toggleList(category) {
     const list = document.querySelector(`.${category}`);
     const li = document.querySelector(`.${category}-element`);
-
     list.style = li ? 'display:block' : 'display:none';
   }
 
@@ -109,7 +125,9 @@ class UI {
     alert.style = 'display:none';
   }
 
-  static elementToRemove = null;
+  static elementToEdit = null;
+
+  static editModal = null;
 }
 
 export default UI;
