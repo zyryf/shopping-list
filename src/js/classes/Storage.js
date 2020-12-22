@@ -30,7 +30,6 @@ class Storage {
         ? new Product(category, name, number, null)
         : new Product(category, name, null, number);
 
-    console.log(productToRemove);
     products.forEach((product, index) => {
       if (_.isEqual({ ...productToRemove }, product)) {
         products.splice(index, 1);
