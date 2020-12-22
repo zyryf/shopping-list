@@ -24,6 +24,7 @@ class UI {
     </div>
     `;
     list.appendChild(li);
+    Storage.addProduct(product);
     this.toggleList(product.category);
 
     if (formType === 'main') {
@@ -128,6 +129,7 @@ class UI {
     // delete old element
     const category = this.elementToEdit.parentElement.id;
     this.elementToEdit.remove();
+    // Storage.removeProduct(this.elementToEdit);
     this.toggleList(category);
 
     // add new element
